@@ -11,7 +11,7 @@ cmd = "CREATE TABLE tickets (\
     perms VARCHAR(255) NOT NULL, \
     problem TEXT NOT NULL, \
     file FILESTREAM, \
-    Resolved? bit )"
+    Notes TEXT )"
 
 cur.execute(cmd)
 conn.close()
