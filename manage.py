@@ -11,7 +11,7 @@ def home():
    return render_template('home.htm')
 
 @app.route('/enternew')
-def new_student():
+def new_ticket():
    return render_template('newticket.htm')
 
 
@@ -19,22 +19,23 @@ def new_student():
 def addrec():
    if request.method == 'POST':
       try:
-         empid = request.form['empid']
-         empname = request.form['empname']
-         empgender = request.form['empgender']
-         empphone = request.form['empphone']
-         empbdate = request.form['empbdate']
+         apt = request.form['apt']
+         urgency = request.form['urgency']
+         room = request.form['room']
+         perms = request.form['perms']
+         problem = request.form['problem']
+         file = request.form['file']
          
-         with sql.connect(host="localhost", user="flask", password="ubuntu", database="flask_db") as con:
+         with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "INSERT INTO employees (empid,empname,empgender,empphone,empbdate) VALUES ('{0}','{1}','{2}','{3}','{4}')".format(empid,empname,empgender,empphone,empbdate)
+            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,file) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')".format(apt,urgency,room,perms,problem,file)
             cur.execute(cmd)
             
             con.commit()
-            msg = "Record successfully added"
+            msg = "Ticket submitted. We will do our best to resolve your problem"
       except:
          con.rollback()
-         msg = "error in insert operation"
+         msg = "There was an issue submitting your ticket. Please check that you filled all required fields (marked with *) and try again."
          
       finally:
          return render_template("output.htm",msg = msg)
@@ -42,9 +43,9 @@ def addrec():
 
 @app.route('/list')
 def list():
-   with sql.connect(host="localhost", user="flask", password="ubuntu", database="flask_db") as conn:  
+   with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
-      cur.execute("select * from employees")
+      cur.execute("select * from tickets")
       rows = cur.fetchall()
 
    return render_template("list.htm",rows = rows)
