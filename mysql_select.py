@@ -1,8 +1,8 @@
 import mysql.connector as sql
 
-with sql.connect(host="localhost", user="flask", password="ubuntu", database="flask_db") as conn: 
+with sql.connect(host="localhost", user="flask1", password="ubuntu", database="flask_db") as conn: 
     cur = conn.cursor()
-    cmd = "select empid, empname, empgender, empphone, empbdate from employees"
+    cmd = "select * from tickets"
 
     cur.execute(cmd)
     
