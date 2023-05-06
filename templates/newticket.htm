@@ -1,0 +1,66 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<form action="{{ url_for('addrec') }}" method="POST">
+   <h3>Enter Query Information</h3>
+
+   <!--apartment number-->
+   <label for="apt">Apartment Number*:</label>
+   <select name="apt" id="apt">
+      <option value="701">Apt 701</option>
+      <option value="702">Apt 702</option>
+      <option value="703">Apt 703</option>
+      <option value="704">Apt 704</option>
+   </select>
+<br/>
+   <!--urgency levels-->
+   <label for="urgency">Urgency level of request*:</label>
+   <select name="urgency" id="urgency">
+      <option value="low" selected>Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+      <option value="emergency">Emergency</option>
+   </select>
+<br/>
+   <!--Room-->
+   <label for="room">Room*:</label>
+   <select name="room" id="room">
+      <option value="livingroom">Living Room</option>
+      <option value="masterbedroom">Master Bedroom</option>
+      <option value="guestroom">Guest Bedroom</option>
+      <option value="masterbathroom">Master Bathroom</option>
+      <option value="kitchen">Kitchen</option>
+   </select>
+   <br/>
+   <!--permission to enter-->
+    <label for="perms">Permission to enter Apartment:*:</label>
+    <select name="perms" id="perms">
+       <option value="yes">Yes, maintenance has permission to enter my apartment</option>
+       <option value="no">No, maintenance may not enter my apartment unless I am present</option>
+    </select>
+    <br/>
+    <!--enter problem information here-->
+    Please describe the problem that you are having*:<br/>
+    <textarea id="textbox" name="problem" rows="10" cols="50"></textarea>
+    <br/>
+    <!--attach file-->
+    <form method="post" enctype="multipart/form-data">
+   
+      <div>
+        <label for="file">Choose a file to upload (jpeg,jpg,png accepted):</label>
+        <input type="file" id="file" name="file" accept=".jpg,.jpeg,.png" />
+      </div>
+   <!--time stamp info-->
+      
+
+
+
+<br/>
+   <input type="submit" value="submit" />
+</br>
+<button type="button" class="btn btn-danger"><a href = "/">Cancel</a></button>
+</form>
+</body>
+
+</html>
+{% endblock %}
