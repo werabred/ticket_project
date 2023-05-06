@@ -24,11 +24,10 @@ def addrec():
          room = request.form['room']
          perms = request.form['perms']
          problem = request.form['problem']
-         file = request.form['file'].read()
          
          with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,file) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')".format(apt,urgency,room,perms,problem,file)
+            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem) VALUES ('{0}','{1}','{2}','{3}','{4}')".format(apt,urgency,room,perms,problem)
             cur.execute(cmd)
             
             con.commit()
