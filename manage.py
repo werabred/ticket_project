@@ -24,7 +24,7 @@ def addrec():
          room = request.form['room']
          perms = request.form['perms']
          problem = request.form['problem']
-         file = request.form['file']
+         file = request.form['file'].read()
          
          with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
