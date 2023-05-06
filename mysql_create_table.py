@@ -1,6 +1,6 @@
 import mysql.connector as sql
 
-conn = sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db")
+conn = sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db")
 cur = conn.cursor()
 
 cmd = "CREATE TABLE tickets (\
