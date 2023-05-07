@@ -31,7 +31,7 @@ def addrec():
          
          with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,notes) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')".format(apt,urgency,room,perms,problem,status)
+            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,status) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')".format(apt,urgency,room,perms,problem,status)
             cur.execute(cmd)
             
             con.commit()
@@ -60,6 +60,7 @@ def modify():
 
             cmd = "update tickets set notes = '{0}' where ticketid = {1}".format(notes,ticketid)
             cur.execute(cmd)
+            
             con.commit()
             msg = "Ticket updated."
       except:
