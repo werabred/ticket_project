@@ -67,7 +67,7 @@ def modify():
          notes = request.form['notes']
          ticketid = request.form['ticketid']
          status = request.form['status']
-         if ticketid == "":
+         if ticketid is None:
             return render_template("output2.htm", msg = "you must specify the ticket id")
          
          ticketid = int(ticketid)
@@ -85,10 +85,11 @@ def modify():
             cur.execute(cmd)
             
             con.commit()
-            msg = "Ticket updated."
+            msg = "The ticket you have specified has been updated.x"
       except:
-         con.rollback()
          msg = "There was an issue updating the notes."
+         con.rollback()
+         
       
       finally:
          
