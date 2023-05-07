@@ -55,7 +55,7 @@ def addrec():
          
       finally:
          return render_template("output.htm",msg = msg)
-         con.close()
+
 
 #add notes to existing tickets
 @app.route('/modify', methods = ['POST', 'GET'])
