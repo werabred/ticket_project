@@ -15,7 +15,7 @@ def new_ticket():
    return render_template('newticket.htm')
 
 
-@app.route('/addrec', methods = ['POST', 'GET'])
+@app.route('/addrec', methods = ['POST'])
 def addrec():
    if request.method == 'POST':
       try:
