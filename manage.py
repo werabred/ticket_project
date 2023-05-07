@@ -93,7 +93,7 @@ def open_tickets():
       cur = conn.cursor()
       cur.execute("SELECT * FROM tickets WHERE status IN ('open', 'needs followup')")
       rows = cur.fetchall()
-      print(rows)
+      print(rows + "test")
    return render_template("opentickets.htm", rows = rows)
 
 if __name__ == '__main__':
