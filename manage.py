@@ -87,8 +87,8 @@ def list():
       cur.execute("select * from tickets")
       rows = cur.fetchall()
    return render_template("list.htm",rows = rows)
-@app.route('/open_tickets')
-def open_tickets():
+@app.route('/opentickets')
+def opentickets():
    with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
       cur.execute("SELECT * FROM tickets WHERE status IN ('open', 'needs followup')")
