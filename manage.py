@@ -86,14 +86,14 @@ def list():
       cur = conn.cursor()
       cur.execute("select * from tickets")
       rows = cur.fetchall()
-
    return render_template("list.htm",rows = rows)
 @app.route('/open_tickets')
 def open_tickets():
    with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
-      cur.execute("SELECT * FROM tickets WHERE status LIKE 'complete' OR status LIKE 'needs followup';")
+      cur.execute("SELECT * FROM tickets WHERE lower(status) LIKE 'open' OR lower(status) LIKE 'needs followup'")
       rows = cur.fetchall()
    return render_template("opentickets.htm", rows = rows)
+
 if __name__ == '__main__':
    app.run(debug = True)
