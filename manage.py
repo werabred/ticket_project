@@ -14,6 +14,9 @@ def home():
 def new_ticket():
    return render_template('newticket.htm')
 
+@app.route('/edit_ticket')
+def edit_ticket():
+   return render_template('modify.htm')
 
 @app.route('/addrec', methods = ['POST', 'GET'])
 def addrec():
@@ -41,7 +44,7 @@ def addrec():
          con.close()
 
 #add notes to existing tickets
-@app.route('/modify', methods = ['POST'])
+@app.route('/modify', methods = ['POST', 'GET'])
 def modify():
    if request.method == 'POST':
       try:
