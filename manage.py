@@ -103,7 +103,7 @@ def opentickets():
 def closedtickets():
    with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
-      cur.execute("SELECT * FROM tickets WHERE status IN ('complete')")
+      cur.execute("SELECT * FROM tickets WHERE status IN ('complete', 'cancelled')")
       rows = cur.fetchall()
    return render_template("closedtickets.htm", rows = rows)
 
