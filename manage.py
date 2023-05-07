@@ -89,7 +89,7 @@ def modify():
       
       finally:
          
-         return render_template("output.htm", msg = msg)
+         return render_template("output2.htm", msg = msg)
 
    
 
