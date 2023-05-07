@@ -28,7 +28,7 @@ def addrec():
          perms = request.form['perms']
          problem = request.form['problem']
          
-         with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
+         with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
             cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem) VALUES ('{0}','{1}','{2}','{3}','{4}')".format(apt,urgency,room,perms,problem)
             cur.execute(cmd)
@@ -50,9 +50,9 @@ def modify():
       try:
          notes = request.form['notes']
          ticketid = request.form['ticketid']
-         with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
+         with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "update tickets set notes = '{0}' where ticketid = '{1}'".format(notes,ticketid)
+            cmd = "update tickets set Notes = '{0}' where ticketid = '{1}';".format(notes,ticketid)
             cur.execute(cmd)
             
             con.commit()
@@ -66,7 +66,7 @@ def modify():
          con.close()
 @app.route('/list')
 def list():
-   with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as conn:  
+   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
       cur.execute("select * from tickets")
       rows = cur.fetchall()
