@@ -50,8 +50,8 @@ def addrec():
             con.commit()
             msg = "Ticket submitted. We will do our best to resolve your problem"
       except:
-         con.rollback()
          msg = "There was an issue submitting your ticket. Please check that you filled all required fields (marked with *) and try again."
+         con.rollback()
          
       finally:
          return render_template("output.htm",msg = msg)
