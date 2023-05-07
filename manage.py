@@ -52,7 +52,7 @@ def modify():
          ticketid = request.form['ticketid']
          with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "update tickets set Notes = '{0}' where ticketid = '{1}';".format(notes,ticketid)
+            cmd = "update tickets set Notes = '{0}' where ticketid = {1}".format(notes,ticketid)
             cur.execute(cmd)
             
             con.commit()
