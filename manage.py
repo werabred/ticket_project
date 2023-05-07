@@ -50,6 +50,7 @@ def modify():
       try:
          notes = request.form['notes']
          ticketid = request.form['ticketid']
+         ticketid = int(ticketid)
          with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
             cmd = "update tickets set Notes = '{0}' where ticketid = {1}".format(notes,ticketid)

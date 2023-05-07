@@ -10,7 +10,7 @@ cmd = "CREATE TABLE tickets (\
     room VARCHAR(255) NOT NULL, \
     perms VARCHAR(255) NOT NULL, \
     problem TEXT NOT NULL, \
-    Notes TEXT )"
+    notes TEXT )"
 
 cur.execute(cmd)
 conn.close()
