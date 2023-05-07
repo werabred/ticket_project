@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<form action="{{ url_for('modify') }}" method="POST">
+   <h3>Add notes or mark complete</h3>
+<br/>
+   Ticket ID*:<br/>
+    <textarea id="textbox" name="ticketid" rows="1" cols="1"></textarea>
+<br/>
+
+</form>
+
+</body>
+
+</html>
+{% endblock %}

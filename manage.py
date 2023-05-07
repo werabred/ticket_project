@@ -15,7 +15,7 @@ def new_ticket():
    return render_template('newticket.htm')
 
 
-@app.route('/addrec',methods = ['POST', 'GET'])
+@app.route('/addrec', methods = ['POST', 'GET'])
 def addrec():
    if request.method == 'POST':
       try:
@@ -40,6 +40,27 @@ def addrec():
          return render_template("output.htm",msg = msg)
          con.close()
 
+#add notes to existing tickets
+@app.route('/modify', methods = ['POST', 'GET'])
+def modify():
+   if request.method == 'POST':
+      try:
+         notes = request.form['notes']
+         ticketid = request.form['ticketid']
+         with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as con:
+            cur = con.cursor()
+            cmd = "update tickets set notes = '{0}' where ticketid = {1}".format(notes,ticketid)
+            cur.execute(cmd)
+            
+            con.commit()
+            msg = "Ticket updated. We have noted that " + notes
+      except:
+         con.rollback()
+         msg = "There was an issue updating the notes."
+         
+      finally:
+         return render_template("output.htm",msg = msg)
+         con.close()
 @app.route('/list')
 def list():
    with sql.connect(host="localhost", user="flask", password="ubuntu", database="tickets_db") as conn:  
