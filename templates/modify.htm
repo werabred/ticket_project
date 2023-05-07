@@ -2,15 +2,21 @@
 
 {% block content %}
 <form action="{{url_for('modify')}}" method="POST">
-   <h3>Add notes or mark complete</h3>
+   <h3>Add notes or mark complete</h3> 
+   <br/>
+   <button type="button" class="btn btn-danger"><a href = "/list">See all tickets</a></button>
 <br/>
    Ticket ID*:<br/>
     <textarea id="textbox" name="ticketid" rows="1" cols="3"></textarea>
 <br/>
 <br/>
-   Modify Notes (Indicate if complete, in progress, or needs additional support)*:<br/>
-    <textarea id="textbox" name="notes" rows="10" cols="50"></textarea>
-<br/>
+<label for="notes">Edit Status*:</label>
+    <select name="notes" id="notes">
+       <option value="yes">Ticket Complete</option>
+       <option value="more help needed">Needs additional support</option>
+       <option value="ticket no longer valid">Ticket Cancelled</option>
+    </select>
+    <br/>
 <button type="submit" class="btn btn-primary">Edit Notes</button>
 </form>
 
