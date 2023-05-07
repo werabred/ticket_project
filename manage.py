@@ -18,7 +18,7 @@ def new_ticket():
 def edit_ticket():
    return render_template('modify.htm')
 
-@app.route('open')
+@app.route('/open')
 def open():
    return render_template('opentickets.htm')
 
