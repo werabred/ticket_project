@@ -22,6 +22,10 @@ def edit_ticket():
 def open():
    return render_template('opentickets.htm')
 
+@app.route('/close')
+def close():
+   return render_template('closedtickets.htm')
+
 @app.route('/addrec', methods = ['POST'])
 def addrec():
    if request.method == 'POST':
@@ -93,8 +97,16 @@ def opentickets():
       cur = conn.cursor()
       cur.execute("SELECT * FROM tickets WHERE status IN ('open', 'needs followup')")
       rows = cur.fetchall()
-      print(rows)
    return render_template("opentickets.htm", rows = rows)
+
+@app.route('/closedtickets')
+def closedtickets():
+   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
+      cur = conn.cursor()
+      cur.execute("SELECT * FROM tickets WHERE status IN ('complete')")
+      rows = cur.fetchall()
+   return render_template("closedtickets.htm", rows = rows)
+
 
 if __name__ == '__main__':
    app.run(debug = True)
