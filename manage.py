@@ -92,8 +92,8 @@ def list():
 def open_tickets():
    with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
       cur = conn.cursor()
-      cur.execute("select * from tickets where lower(status) not like 'complete'")
+      cur.execute("SELECT * FROM tickets WHERE status LIKE 'complete' OR status LIKE 'needs followup';")
       rows = cur.fetchall()
-
+   return render_template("opentickets.htm", rows = rows)
 if __name__ == '__main__':
    app.run(debug = True)
