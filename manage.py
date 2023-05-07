@@ -84,6 +84,12 @@ def list():
       rows = cur.fetchall()
 
    return render_template("list.htm",rows = rows)
+@app.route('/open_tickets')
+def open_tickets():
+   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
+      cur = conn.cursor()
+      cur.execute("select * from tickets where lower(status) not like 'complete'")
+      rows = cur.fetchall()
 
 if __name__ == '__main__':
    app.run(debug = True)
