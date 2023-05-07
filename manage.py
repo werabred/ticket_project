@@ -57,7 +57,7 @@ def modify():
             cur.execute(cmd)
             
             con.commit()
-            msg = "Ticket updated. We have noted that " + notes
+            msg = "Ticket updated."
       except:
          con.rollback()
          msg = "There was an issue updating the notes."
