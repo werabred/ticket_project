@@ -18,6 +18,10 @@ def new_ticket():
 def edit_ticket():
    return render_template('modify.htm')
 
+@app.route('open')
+def open():
+   return render_template('opentickets.htm')
+
 @app.route('/addrec', methods = ['POST'])
 def addrec():
    if request.method == 'POST':
