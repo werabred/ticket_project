@@ -67,6 +67,9 @@ def modify():
          notes = request.form['notes']
          ticketid = request.form['ticketid']
          status = request.form['status']
+         if ticketid == "":
+            return render_template("output2.htm", msg = "you must specify the ticket id")
+         
          ticketid = int(ticketid)
          if notes == "":
             notes = "None"
