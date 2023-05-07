@@ -8,7 +8,7 @@
     <title>Edit Ticket</title>
 </head>
 <form action="{{url_for('modify')}}" method="POST">
-   <h3>Add notes or mark complete</h3> 
+   <h3>Add notes and mark complete</h3> 
    <br/>
    <button type="button" class="btn btn-secondary"><a href = "/list">See all tickets</a></button>
 <br/>
@@ -16,14 +16,18 @@
     <textarea id="textbox" name="ticketid" rows="1" cols="3"></textarea>
 <br/>
 <br/>
-<label for="notes">Edit Status*:</label>
-    <select name="notes" id="notes">
+<label for="status">Edit Status*:</label>
+    <select name="status" id="status">
        <option value="complete">Ticket Complete</option>
        <option value="needs followup">Needs additional support</option>
        <option value="ticket cancelled">Ticket Cancelled</option>
     </select>
     <br/>
-<button type="submit" class="btn btn-primary">Edit Notes</button>
+    Additional Notes:<br/>
+    <textarea id="textbox" name="notes" rows="10" cols="50"></textarea>
+    <br/>
+
+<button type="submit" class="btn btn-primary">Update Ticket</button>
 </form>
 
 </body>
