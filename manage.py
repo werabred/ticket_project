@@ -82,9 +82,10 @@ def modify():
          msg = "There was an issue updating the notes."
          
       finally:
+         list()
          return render_template("output.htm", msg = msg)
          con.close()
-list()
+
 @app.route('/list')
 def list():
    with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
