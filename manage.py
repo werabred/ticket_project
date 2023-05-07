@@ -56,7 +56,7 @@ def addrec():
 #add notes to existing tickets
 @app.route('/modify', methods = ['POST', 'GET'])
 def modify():
-   
+   list()
    if request.method == 'POST':
       try:
          notes = request.form['notes']
@@ -85,7 +85,7 @@ def modify():
       finally:
          return render_template("output.htm", msg = msg)
          con.close()
-   list()
+   
 
 @app.route('/list')
 def list():
