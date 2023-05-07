@@ -28,10 +28,11 @@ def addrec():
          perms = request.form['perms']
          problem = request.form['problem']
          status = "open"
+         notes = "None"
          
          with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
-            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,status) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')".format(apt,urgency,room,perms,problem,status)
+            cmd = "INSERT INTO tickets (apt,urgency,room,perms,problem,status,notes) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')".format(apt,urgency,room,perms,problem,status,notes)
             cur.execute(cmd)
             
             con.commit()
@@ -53,6 +54,11 @@ def modify():
          ticketid = request.form['ticketid']
          status = request.form['status']
          ticketid = int(ticketid)
+         if notes == "":
+            notes = "None"
+         else:
+            notes = notes
+
          with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as con:
             cur = con.cursor()
             cmd = "update tickets set status = '{0}' where ticketid = {1}".format(status,ticketid)
