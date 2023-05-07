@@ -6,7 +6,7 @@ cur = conn.cursor()
 # Test connection
 print(conn)
 
-cmd = "CREATE DATABASE flask_db"
+cmd = "CREATE DATABASE tickets_db"
 cur.execute(cmd)
 conn.close()
 
