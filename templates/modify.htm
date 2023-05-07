@@ -33,14 +33,16 @@
       <td>{{row[7]}}</td>
    </tr>
    {% endfor %}
+   </table>
+   
 <form action="{{url_for('modify')}}" method="POST">
-   <h3>Add notes and mark complete</h3> 
+   <h3>Add notes and change the status of current tickets:</h3> 
    <button type="button" class="btn btn-warning"><a href = "/">Return to Menu</a></button>
-<br/>
+   <br/>
    Ticket ID*:<br/>
     <textarea id="textbox" name="ticketid" rows="1" cols="3"></textarea>
-<br/>
-<label for="status">Edit Status*:</label>
+   <br/>
+   <label for="status">Edit Status*:</label>
     <select name="status" id="status">
        <option value="complete">Ticket Complete</option>
        <option value="needs followup">Needs additional support</option>
