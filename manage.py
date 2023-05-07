@@ -16,7 +16,11 @@ def new_ticket():
 
 @app.route('/edit_ticket')
 def edit_ticket():
-   return render_template('modify.htm')
+   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
+      cur = conn.cursor()
+      cur.execute("select * from tickets")
+      rows = cur.fetchall()
+   return render_template('modify.htm', rows = rows)
 
 @app.route('/open')
 def open():
@@ -56,11 +60,9 @@ def addrec():
 #add notes to existing tickets
 @app.route('/modify', methods = ['POST', 'GET'])
 def modify():
-   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
-      cur = conn.cursor()
-      cur.execute("select * from tickets")
-      rows = cur.fetchall()
+   
    if request.method == 'POST':
+
       try:
          notes = request.form['notes']
          ticketid = request.form['ticketid']
@@ -84,10 +86,11 @@ def modify():
       except:
          con.rollback()
          msg = "There was an issue updating the notes."
-         
+      
       finally:
-         return render_template("output.htm", msg = msg, rows = rows)
-         con.close()
+         
+         return render_template("output.htm", msg = msg)
+
    
 
 @app.route('/list')
