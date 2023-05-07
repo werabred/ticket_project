@@ -56,7 +56,10 @@ def addrec():
 #add notes to existing tickets
 @app.route('/modify', methods = ['POST', 'GET'])
 def modify():
-   list()
+   with sql.connect(host="localhost", user="flask1", password="ubuntu", database="tickets_db") as conn:  
+      cur = conn.cursor()
+      cur.execute("select * from tickets")
+      rows = cur.fetchall()
    if request.method == 'POST':
       try:
          notes = request.form['notes']
@@ -83,7 +86,7 @@ def modify():
          msg = "There was an issue updating the notes."
          
       finally:
-         return render_template("output.htm", msg = msg)
+         return render_template("output.htm", msg = msg, rows = rows)
          con.close()
    
 
