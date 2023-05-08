@@ -39,6 +39,9 @@ def addrec():
          room = request.form['room']
          perms = request.form['perms']
          problem = request.form['problem']
+         if problem == "":
+            msg = "There was an issue submitting your ticket. Please check that you filled all required fields (marked with *) and try again."
+            return render_template("output.htm", msg = msg)
          status = "open"
          notes = "None"
          
