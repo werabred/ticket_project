@@ -6,10 +6,10 @@ cur = conn.cursor()
 # Test connection
 print(conn)
 
-cmd = "CREATE USER 'flask'@'localhost' IDENTIFIED BY 'ubuntu';"
+cmd = "CREATE USER 'flask1'@'localhost' IDENTIFIED BY 'ubuntu';"
 cur.execute(cmd)
 
-cmd = "GRANT ALL PRIVILEGES ON *.* TO 'flask'@'localhost' WITH GRANT OPTION;"
+cmd = "GRANT ALL PRIVILEGES ON *.* TO 'flask1'@'localhost' WITH GRANT OPTION;"
 cur.execute(cmd)
 
 cmd = "FLUSH PRIVILEGES;"
